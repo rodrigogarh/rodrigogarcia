@@ -17,26 +17,32 @@
  *
  * @package WordPress
  */
-
 // ** MySQL settings - You can get this info from your web host ** //
+$url = parse_url(getenv('DATABASE_URL') ? getenv('DATABASE_URL') : getenv('CLEARDB_DATABASE_URL'));
 /** The name of the database for WordPress */
-define('DB_NAME', 'dbl5o1dbuqpk2f');
-
+define('DB_NAME', trim($url['path'], '/'));
 /** MySQL database username */
-define('DB_USER', 'nbyetyccznurdz');
-
+define('DB_USER', $url['user']);
 /** MySQL database password */
-define('DB_PASSWORD', 'InvfU-21JjK5T9_w0xGKzVvjLR');
-
+define('DB_PASSWORD', $url['pass']);
 /** MySQL hostname */
-define('DB_HOST', 'ec2-54-235-119-42.compute-1.amazonaws.com');
-
+define('DB_HOST', $url['host']);
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
-
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
-
+// define('FS_METHOD', 'direct');
+define( 'DISALLOW_FILE_EDIT', true );
+define( 'DISALLOW_FILE_MODS', true );
+define( 'WP_CACHE', true );
+define('NEW_RELIC_LICENSE_KEY', getenv('NEW_RELIC_LICENSE_KEY'));
+define('MEMCACHEDCLOUD_SERVERS', getenv('MEMCACHEDCLOUD_SERVERS'));
+define('MEMCACHEDCLOUD_USERNAME', getenv('MEMCACHEDCLOUD_USERNAME'));
+define('MEMCACHEDCLOUD_PASSWORD', getenv('MEMCACHEDCLOUD_PASSWORD'));
+define( 'S3_UPLOADS_BUCKET', getenv('S3_UPLOADS_BUCKET'));
+define( 'S3_UPLOADS_KEY',    getenv('S3_UPLOADS_KEY'));
+define( 'S3_UPLOADS_SECRET', getenv('S3_UPLOADS_SECRET'));
+define( 'S3_UPLOADS_REGION', getenv('S3_UPLOADS_REGION')); // the s3 bucket region, required for Frankfurt and Beijing.
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -46,17 +52,17 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'put your unique phrase here');
-define('SECURE_AUTH_KEY',  'put your unique phrase here');
-define('LOGGED_IN_KEY',    'put your unique phrase here');
-define('NONCE_KEY',        'put your unique phrase here');
-define('AUTH_SALT',        'put your unique phrase here');
-define('SECURE_AUTH_SALT', 'put your unique phrase here');
-define('LOGGED_IN_SALT',   'put your unique phrase here');
-define('NONCE_SALT',       'put your unique phrase here');
-
+define('AUTH_KEY',         getenv('AUTH_KEY'));
+define('SECURE_AUTH_KEY',  getenv('SECURE_AUTH_KEY'));
+define('LOGGED_IN_KEY',    getenv('LOGGED_IN_KEY'));
+define('NONCE_KEY',        getenv('NONCE_KEY'));
+define('AUTH_SALT',        getenv('AUTH_SALT'));
+define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT'));
+define('LOGGED_IN_SALT',   getenv('LOGGED_IN_SALT'));
+define('NONCE_SALT',       getenv('NONCE_SALT'));
+/* Mixpanel */
+define('MIXPANEL_TOKEN' , '898c989d0f51000797c18113d9cb95b9');
 /**#@-*/
-
 /**
  * WordPress Database Table prefix.
  *
@@ -64,7 +70,6 @@ define('NONCE_SALT',       'put your unique phrase here');
  * a unique prefix. Only numbers, letters, and underscores please!
  */
 $table_prefix  = 'wp_';
-
 /**
  * For developers: WordPress debugging mode.
  *
@@ -78,12 +83,9 @@ $table_prefix  = 'wp_';
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define('WP_DEBUG', false);
-
 /* That's all, stop editing! Happy blogging. */
-
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
-
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
