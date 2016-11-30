@@ -32,17 +32,7 @@ define('DB_CHARSET', 'utf8');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 // define('FS_METHOD', 'direct');
-define( 'DISALLOW_FILE_EDIT', true );
-define( 'DISALLOW_FILE_MODS', true );
-define( 'WP_CACHE', true );
-define('NEW_RELIC_LICENSE_KEY', getenv('NEW_RELIC_LICENSE_KEY'));
-define('MEMCACHEDCLOUD_SERVERS', getenv('MEMCACHEDCLOUD_SERVERS'));
-define('MEMCACHEDCLOUD_USERNAME', getenv('MEMCACHEDCLOUD_USERNAME'));
-define('MEMCACHEDCLOUD_PASSWORD', getenv('MEMCACHEDCLOUD_PASSWORD'));
-define( 'S3_UPLOADS_BUCKET', getenv('S3_UPLOADS_BUCKET'));
-define( 'S3_UPLOADS_KEY',    getenv('S3_UPLOADS_KEY'));
-define( 'S3_UPLOADS_SECRET', getenv('S3_UPLOADS_SECRET'));
-define( 'S3_UPLOADS_REGION', getenv('S3_UPLOADS_REGION')); // the s3 bucket region, required for Frankfurt and Beijing.
+ // the s3 bucket region, required for Frankfurt and Beijing.
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -52,16 +42,6 @@ define( 'S3_UPLOADS_REGION', getenv('S3_UPLOADS_REGION')); // the s3 bucket regi
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         getenv('AUTH_KEY'));
-define('SECURE_AUTH_KEY',  getenv('SECURE_AUTH_KEY'));
-define('LOGGED_IN_KEY',    getenv('LOGGED_IN_KEY'));
-define('NONCE_KEY',        getenv('NONCE_KEY'));
-define('AUTH_SALT',        getenv('AUTH_SALT'));
-define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT'));
-define('LOGGED_IN_SALT',   getenv('LOGGED_IN_SALT'));
-define('NONCE_SALT',       getenv('NONCE_SALT'));
-/* Mixpanel */
-define('MIXPANEL_TOKEN' , '898c989d0f51000797c18113d9cb95b9');
 /**#@-*/
 /**
  * WordPress Database Table prefix.
