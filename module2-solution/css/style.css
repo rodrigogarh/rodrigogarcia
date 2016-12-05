@@ -20,6 +20,10 @@ h1.title {
   border: 1px solid black;
 }
 
+.food {
+  margin: 40px;
+}
+
 #chiken {
   background-color: #69D2E7;
 }
